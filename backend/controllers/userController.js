@@ -1,6 +1,6 @@
 import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt"; //for encryption of password
+import bcrypt from "bcryptjs"; //for encryption of password
 import validator from "validator"; //to validate email is correct or not
 
 // login user
