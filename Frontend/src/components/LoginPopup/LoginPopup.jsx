@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
 import {StoreContext} from '../../context/StoreContext'
@@ -66,7 +66,6 @@ const LoginPopup = ({setShowLogin}) => {
           ?<p>Create a new account? <span onClick={()=>setCurrState("Sign Up")}>Click Here!</span></p>
           :<p>Already have an account? <span onClick={()=>setCurrState("Login")}>Login Here</span></p>
           }
-    
         </form>
     </div>
   )

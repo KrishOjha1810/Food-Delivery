@@ -22,6 +22,30 @@
     align-items: center;
     gap: 40px;
 }
+.search-container {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid tomato;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.search-container img{
+    width: 75%;
+    height: 18px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 25px;
+    color: #49557e;
+}
 
 .navbar button{
     background: transparent;
@@ -46,11 +70,11 @@
     cursor: pointer;
 }
 
-.navbar-search-icon{
+.navbar-cart-icon{
     position: relative;
 }
 
-.navbar-search-icon .dot{
+.navbar-cart-icon .dot{
     position: absolute;
     min-width: 10px;
     min-height: 10px;
@@ -62,6 +86,7 @@
 /* postion relative and absolute because inside profile icon there should be a dropdown but it shouldn't be seen until hovered to thats why profile will be on top of dropdown  */
 .navbar-profile{
     position: relative;
+    cursor: pointer;
 }
 /* the dropdown won't be shown until hovered thats why display none  */
 .nav-profile-dropdown{ 

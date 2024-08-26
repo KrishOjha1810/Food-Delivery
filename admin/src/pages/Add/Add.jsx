@@ -41,7 +41,7 @@ const Add = ({url}) => {
       setImage(false)
       toast.success(response.data.message)//flash message display
     }else{
-        toast.error(response.data.message);
+      toast.error(response.data.message);
     }
   }
 

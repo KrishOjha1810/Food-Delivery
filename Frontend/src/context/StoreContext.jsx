@@ -10,6 +10,7 @@ const StoreContextProvider = (props) => {
     const url = "http://localhost:4000"//backend url
     const [token,setToken] = useState("");
     const [food_list,setFoodList] = useState([]);//so that frontend data comes from backend 
+    const [searchQuery, setSearchQuery] = useState(""); //to get information from search query and search futher 
 
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
@@ -75,6 +76,8 @@ const StoreContextProvider = (props) => {
         url,//to access this url across any component
         token,
         setToken,
+        setSearchQuery,
+        searchQuery
     }
     return (
         <StoreContext.Provider value={contextValue}>
