@@ -1,15 +1,15 @@
-.navbar{
-    padding: 20px 0px;
+.navbar {
+    padding: 20px 0px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar .logo{
+.navbar .logo {
     width: 150px;
 }
 
-.navbar-menu{
+.navbar-menu {
     display: flex;
     list-style: none;
     gap: 20px;
@@ -17,37 +17,13 @@
     font-size: 18px;
 }
 
-.navbar-right{
+.navbar-right {
     display: flex;
     align-items: center;
     gap: 40px;
 }
-.search-container {
-    display: flex;
-    align-items: center;
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: #fff;
-    border: 1px solid tomato;
-    border-radius: 8px;
-    padding: 5px 10px;
-}
 
-.search-container img{
-    width: 75%;
-    height: 18px;
-}
-
-.search-input {
-    border: none;
-    outline: none;
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 25px;
-    color: #49557e;
-}
-
-.navbar button{
+.navbar button {
     background: transparent;
     font-size: 16px;
     color: #49557e;
@@ -55,10 +31,10 @@
     padding: 10px 30px;
     border-radius: 50px;
     cursor: pointer;
-    transform: 0.3s;
+    transition: 0.3s;
 }
 
-.navbar button:hover{
+.navbar button:hover {
     background-color: #fff4f2;
 }
 
@@ -66,15 +42,54 @@
     padding-bottom: 2px;
     border-bottom: 2px solid #49557e;
 }
-.navbar li{
+
+.navbar li {
     cursor: pointer;
 }
 
-.navbar-cart-icon{
+.search-container {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 20px; /* Adjusted margin for better spacing */
+    background-color: #fff;
+    border-radius: 8px; /* Rounded corners for a modern look */
+    padding: 5px 15px; /* Adjusted padding for better spacing */
+    border: 1px solid tomato;
+    transition: 0.3s ease; /* Smooth transition on focus */
+}
+
+.search-container img {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px; /* Space between icon and input */
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    color: #49557e;
+    background-color: transparent; /* Ensure no background color inside */
+}
+
+.search-input::placeholder {
+    color: #49557e; 
+    font-size: 14px;
+}
+
+.search-container:focus-within {
+    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5); /* Slight shadow on focus */
+}
+
+.navbar-cart-icon {
     position: relative;
 }
 
-.navbar-cart-icon .dot{
+.navbar-cart-icon .dot {
     position: absolute;
     min-width: 10px;
     min-height: 10px;
@@ -83,13 +98,13 @@
     top: -8px;
     right: -8px;
 }
-/* postion relative and absolute because inside profile icon there should be a dropdown but it shouldn't be seen until hovered to thats why profile will be on top of dropdown  */
-.navbar-profile{
+
+.navbar-profile {
     position: relative;
     cursor: pointer;
 }
-/* the dropdown won't be shown until hovered thats why display none  */
-.nav-profile-dropdown{ 
+
+.nav-profile-dropdown {
     position: absolute;
     display: none;
     right: 0;
@@ -107,63 +122,134 @@
     outline: 2px solid white;
     list-style: none;
 }
-.nav-profile-dropdown li{
+
+.nav-profile-dropdown li {
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
 }
-.nav-profile-dropdown img{
+
+.nav-profile-dropdown img {
     width: 20px;
 }
-.nav-profile-dropdown li:hover{
+
+.nav-profile-dropdown li:hover {
     color: tomato;
 }
-.
 
-@media (max-width:1050px){
-    .navbar .logo{
+@media (max-width: 1050px) {
+    .navbar .logo {
         width: 140px;
     }
-    .navbar-menu{
+    .navbar-menu {
         gap: 20px;
         font-size: 17px;
     }
-    .navbar-right{
+    .navbar-right {
         gap: 30px;
     }
-    .navbar-right img{
+    .navbar-right img {
         width: 22px;
     }
-    .navbar-right button{
+    .navbar-right button {
         padding: 8px 25px;
+    }
+    .search-container {
+        max-width: 300px; /* Reduce max-width for smaller screens */
+        padding: 5px 10px; /* Adjust padding for smaller screens */
     }
 }
 
-@media (max-width:900px){
-    .navbar .logo{
+@media (max-width: 900px) {
+    .navbar .logo {
         width: 120px;
     }
-    .navbar-menu{
-        gap: 15px;
-        font-size: 16px;
+    .navbar-menu {
+        display: none;
     }
-    .navbar-right{
-        gap: 20px;
+    .navbar-right {
+        gap: 10px;
     }
-    .navbar-right img{
+    .navbar-right img {
         width: 20px;
     }
-    .navbar-right button{
+    .navbar-right button {
         padding: 7px 20px;
+        font-size: 15px;
+    }
+    .search-container {
+        max-width: 250px; /* Further reduce max-width */
+    }
+    .search-container img {
+        width: 16px;
+        height: 16px;
+    }
+    .search-input {
         font-size: 15px;
     }
 }
 
-@media (max-width:750px){
-    
-    .navbar-menu{
+@media (max-width: 750px) {
+    .navbar-menu {
         display: none;
     }
-    
+    .navbar-right button {
+        padding: 10px;
+        font-size: 12px;
+    }
+    .search-container {
+        max-width: 150px;
+        padding: 5px 8px;
+        margin: 0 10px; /* Adjust margins for small screens */
+    }
+
+    .search-input {
+        width: 150px;
+    }
+    .navbar-right {
+        justify-content: flex-end; /* Align right elements better */
+    }
+}
+
+@media (max-width: 510px) {
+    .navbar .logo{
+        width: 95px;
+    }
+    .search-container {
+        max-width: 40%;
+        border-radius: 20px;
+        padding: 0px 8px;
+    }
+    .navbar-right button {
+        padding: 4px 8px;
+        border-radius: 20px;
+        font-size:10px;
+    }
+    .navbar-right img{
+        width: 18px;
+    }
+    .search-container img {
+        height: 13px;
+        width: 13px;
+    }
+}
+
+@media (max-width: 395px) {
+    .navbar .logo {
+        width: 75px;
+    }
+    .navbar-right button{
+        padding: 3px 8px;
+    }
+    .navbar-right img{
+        width: 17px;
+    }
+    .search-container {
+        max-width: 40%;
+    }
+    .search-input {
+        width: 80px;
+        padding: 0;
+    }
 }

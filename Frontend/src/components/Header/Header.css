@@ -16,6 +16,7 @@
     left: 6vw;
     animation: fadeIn 3s;
 }
+
 .header-contents h2{
     font-weight: 500;
     color: white;
@@ -35,6 +36,13 @@
     background-color: white;
     font-size: max(1vw, 13px);
     border-radius: 50px;
+}
+
+.header-contents button:hover{
+    background-color: rgb(253, 185, 171);
+    color: #49557e; 
+    outline: 2px solid white;
+    cursor: pointer;
 }
 
 @media (max-width:1050px){

@@ -37,8 +37,7 @@ const Navbar = ({ setShowLogin }) => {
         <a href='#app-download' onClick={() => setMenu("mobile-app")} className={menu === "mobile-app" ? "active" : ""}>mobile-app</a>
         <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>contact us</a>
       </ul>
-      <div className="navbar-right">
-        <div className="search-container">
+      <div className="search-container">
           <img src={assets.search_icon} alt="" />
           <input
             type="text"
@@ -49,11 +48,12 @@ const Navbar = ({ setShowLogin }) => {
             onKeyUp={handleSearch} // Trigger search on Enter press
           />
         </div>
+      <div className="navbar-right">
         <div className="navbar-cart-icon">
           <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
-        {!token ? <button onClick={() => setShowLogin(true)}>Sign In</button> //if there doesn't exists a token then SignIn button 
+        {!token ? <button className='Sign-in' onClick={() => setShowLogin(true)}>Sign In</button> //if there doesn't exists a token then SignIn button 
           //if token does exists then this div which removes sinup button and displays profile photo
           : <div className='navbar-profile'>
             <img src={assets.profile_icon} alt="" />
