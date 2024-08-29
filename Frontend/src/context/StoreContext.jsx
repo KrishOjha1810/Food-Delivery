@@ -8,7 +8,7 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const [cartItems,setCartItems] = useState({})
-    const url = "http://localhost:4000"//backend url
+    const url = "https://food-delivery-1gzu.onrender.com/"//backend url
     const [token,setToken] = useState("");
     const [food_list,setFoodList] = useState([]);//so that frontend data comes from backend 
     const [searchQuery, setSearchQuery] = useState(""); //to get information from search query and search futher 
