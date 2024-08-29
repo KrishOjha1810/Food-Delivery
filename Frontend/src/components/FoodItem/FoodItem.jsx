@@ -13,7 +13,7 @@ const FoodItem = ({id, name, price, description, image}) => {
         <div className='food-item'>
             <div className="food-item-img-container">
                 {/* to show image when data is fetched we give src from backend when we click on an image and do show image in a different tab we can see this url */}
-                <img className='food-item-image' src={url+"/images/"+image} alt="" />
+                <img className='food-item-img' src={url+"/images/"+image} alt="" />
                 {!cartItems[id]
                     ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white}/>
                     :<div className='food-item-counter'>

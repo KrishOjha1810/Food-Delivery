@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
 import {StoreContext} from '../../context/StoreContext'
+import { toast } from 'react-toastify'
 import axios from "axios"
 // eslint-disable-next-line react/prop-types
 const LoginPopup = ({setShowLogin}) => {
@@ -37,10 +38,11 @@ const LoginPopup = ({setShowLogin}) => {
 
     if(response.data.success){
       setToken(response.data.token);
-      localStorage.setItem("token",response.data.token)
+      localStorage.setItem("token",response.data.token);
+      toast.success(response.data.message);
       setShowLogin(false);
     }else{
-      alert(response.data.message);
+      toast.error(response.data.message);
     }
 
   }

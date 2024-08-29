@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 // import { food_list } from "../assets/assets"; 
 
 export const StoreContext = createContext(null)
@@ -11,12 +12,15 @@ const StoreContextProvider = (props) => {
     const [token,setToken] = useState("");
     const [food_list,setFoodList] = useState([]);//so that frontend data comes from backend 
     const [searchQuery, setSearchQuery] = useState(""); //to get information from search query and search futher 
+    const [searchTriggered, setSearchTriggered] = useState(false);
 
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
             setCartItems((prev)=>({...prev,[itemId]:1}))
+            toast.success("Item added to cart");
         }else{
             setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+            toast.success("Item added to cart");
         }
         if(token){
             await axios.post(url+"/api/cart/add",{itemId},{headers:{token}});//when a product will be added in the cart that product will also be added in the database cart too
@@ -26,8 +30,9 @@ const StoreContextProvider = (props) => {
     const removeFromCart = async(itemId) => {
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}));
         if(token){
-            await axios.post(url+"/api/cart/remove",{itemId},{headers:{token}});
+            await axios.post(url+"/api/cart/remove",{itemId},{headers:{token}});   
         }
+        toast.success("Removed from Cart");
     }
 
     const getTotalCartAmount = () => {
@@ -77,7 +82,9 @@ const StoreContextProvider = (props) => {
         token,
         setToken,
         setSearchQuery,
-        searchQuery
+        searchQuery,
+        searchTriggered,
+        setSearchTriggered
     }
     return (
         <StoreContext.Provider value={contextValue}>

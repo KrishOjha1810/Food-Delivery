@@ -3,8 +3,9 @@ import './PlaceOrder.css'
 import { StoreContext } from '../../context/StoreContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-const PlaceOrder = () => {
+const PlaceOrder = ({ setShowLogin }) => {
 
   const { getTotalCartAmount,token,food_list,cartItems,url } = useContext(StoreContext)
   const [data,setData] = useState({  //to set the form data 
@@ -56,9 +57,12 @@ const PlaceOrder = () => {
   //if user is not logged in he shouln't be able to see the cart page 
   useEffect(()=>{ //whenever token will be updated 
     if(!token) { //so if token is there redirect to cart page 
-      navigate('/cart');
+      toast.error("You must be Logged in to move further");
+      setShowLogin(true); //trigger login button when user not logged in and trying to move further 
+      navigate('/cart');//so we still remain at cart page 
     }else if(getTotalCartAmount()===0){ //even when there is nothing in the cart we will be redirected to cart page itself
       navigate('/cart')
+      toast.error("Your Cart is Empty");
     }
   },[token])
 

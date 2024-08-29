@@ -95,11 +95,10 @@ const verifyOrder = async (req, res) => {
 const userOrders = async(req,res) =>{
     try {
         const orders = await orderModel.find({userId:req.body.userId});//user id will come from authmiddleware
-        res.json({success:true,data:orders}); //data will have everything id,userid,items every information,amount,address,payment status,date
+        res.json({success:true,data:orders,message:"Your Order has been Placed"}); //data will have everything id,userid,items every information,amount,address,payment status,date
     } catch (error) {
         console.log(error);
         res.json({success:false,message:"Error"});
-        
     }
 }
 

@@ -18,7 +18,7 @@ const loginUser = async (req, res) => {
         }
 
         const token = createToken(user._id);//when password matches we'll generate a token
-        res.json({success:true,token})
+        res.json({success:true,message:"Logged in Successfully",token})
 
     } catch (error) {
         console.log(error);
@@ -61,7 +61,7 @@ const registerUser = async (req, res) => {
 
         const user = await newUser.save(); // Save the user
         const token = createToken(user._id); // generating token using id
-        res.json({ success: true, token }); // sending token in json format 
+        res.json({ success: true,message:"Your Account has been created", token }); // sending token in json format 
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: "Error" });
