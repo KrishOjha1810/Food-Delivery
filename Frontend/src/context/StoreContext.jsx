@@ -48,10 +48,11 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
     
-    const fetchFoodList = async()=>{
-        const response = await axios.get(url+"/api/food/list");//whatever we added in bakend thats present on the list page of admin panel will be saved in the response 
-        setFoodList(response.data.data)
-    }
+    const fetchFoodList = async () => {
+        const response = await axios.get(url + "/api/food/list");
+        setFoodList(response.data.data);
+        console.log(response.data.data); // Check the fetched data
+    };
 
     const loadCartData = async(token) =>{
         const response = await axios.post(url+"/api/cart/get",{},{headers:{token}});
