@@ -1,38 +1,51 @@
-import { useContext} from 'react'
-import './FoodItem.css'
-import { assets } from '../../assets/assets'
-import { StoreContext } from '../../context/StoreContext'
+import { useContext } from 'react';
+import './FoodItem.css';
+import { assets } from '../../assets/assets';
+import { StoreContext } from '../../context/StoreContext';
 
+const FoodItem = ({ id, name, price, description, image }) => {
+  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
 
-// eslint-disable-next-line react/prop-types
-const FoodItem = ({id, name, price, description, image}) => {
+  // Ensure the cartItems and id exist before using them
+  const cartItemCount = cartItems && cartItems[id] ? cartItems[id] : 0;
 
-    const {cartItems, addToCart, removeFromCart,url} = useContext(StoreContext)
-
-    return (
-        <div className='food-item'>
-            <div className="food-item-img-container">
-                {/* to show image when data is fetched we give src from backend when we click on an image and do show image in a different tab we can see this url */}
-                <img className='food-item-img' src={url+"/images/"+image} alt="" />
-                {!cartItems[id]
-                    ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white}/>
-                    :<div className='food-item-counter'>
-                        <img onClick={()=>removeFromCart(id)} src={assets.remove_icon_red} alt="" />
-                        <p>{cartItems[id]}</p>
-                        <img onClick={()=>addToCart(id)} src={assets.add_icon_green} alt="" />
-                    </div>
-                }
-            </div>
-            <div className='food-item-info'>
-                <div className="food-item-name-rating">
-                    <p>{name}</p>
-                    <img src={assets.rating_starts} alt="" />
-                </div>
-                <p className="food-item-desc">{description}</p>
-                <p className='food-item-price'>${price}</p>
-            </div>
+  return (
+    <div className="food-item">
+      <div className="food-item-img-container">
+        <img className="food-item-img" src={url + "/images/" + image} alt="" />
+        {!cartItemCount ? (
+          <img
+            className="add"
+            onClick={() => addToCart(id)}
+            src={assets.add_icon_white}
+            alt="Add to cart"
+          />
+        ) : (
+          <div className="food-item-counter">
+            <img
+              onClick={() => removeFromCart(id)}
+              src={assets.remove_icon_red}
+              alt="Remove from cart"
+            />
+            <p>{cartItemCount}</p>
+            <img
+              onClick={() => addToCart(id)}
+              src={assets.add_icon_green}
+              alt="Add more to cart"
+            />
+          </div>
+        )}
+      </div>
+      <div className="food-item-info">
+        <div className="food-item-name-rating">
+          <p>{name}</p>
+          <img src={assets.rating_starts} alt="Rating" />
         </div>
-    )
-}
+        <p className="food-item-desc">{description}</p>
+        <p className="food-item-price">${price}</p>
+      </div>
+    </div>
+  );
+};
 
-export default FoodItem
+export default FoodItem;
